@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "query": "Philips BT1234 beard trimmer product photo",
+  "count": 2,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/d3a36d6f90bc.jpg",
+      "caption": "",
+      "source": "www.amazon.in",
+      "original_width": "1500px",
+      "original_height": "1500px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/7c7a61c280ec.jpg",
+      "caption": "",
+      "source": "www.amazon.com",
+      "original_width": "1000px",
+      "original_height": "922px"
+    }
+  ]
+}

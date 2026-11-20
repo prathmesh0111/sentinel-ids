@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "query": "HP Pavilion 14 laptop product photo",
+  "count": 2,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/703d7cb4ac49.jpg",
+      "caption": "",
+      "source": "www.amazon.com",
+      "original_width": "1500px",
+      "original_height": "1500px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/778680fd8638.png",
+      "caption": "",
+      "source": "www.hp.com",
+      "original_width": "1659px",
+      "original_height": "1244px"
+    }
+  ]
+}

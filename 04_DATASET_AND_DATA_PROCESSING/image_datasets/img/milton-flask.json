@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "query": "Milton Thermosteel stainless steel flask 1 litre product photo",
+  "count": 2,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/54cb17ca816e.jpg",
+      "caption": "",
+      "source": "eBay",
+      "original_width": "2000px",
+      "original_height": "2000px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/eb82b0da9e6e.jpg",
+      "caption": "",
+      "source": "Ubuy Martinique",
+      "original_width": "569px",
+      "original_height": "1906px"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "query": "Apple iPhone 15 smartphone official product photo",
+  "count": 2,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/6d3488d4fa18.jpg",
+      "caption": "",
+      "source": "China Daily HK",
+      "original_width": "1200px",
+      "original_height": "801px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/dc3317b52576.jpg",
+      "caption": "",
+      "source": "www.movertix.com",
+      "original_width": "1200px",
+      "original_height": "1200px"
+    }
+  ]
+}

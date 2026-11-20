@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "query": "boAt Airdopes 161 TWS wireless earbuds product photo",
+  "count": 2,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/55a088cc096c.jpg",
+      "caption": "",
+      "source": "Diamu",
+      "original_width": "1000px",
+      "original_height": "1000px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/677450ac6260.jpeg",
+      "caption": "",
+      "source": "Zepto",
+      "original_width": "1500px",
+      "original_height": "1500px"
+    }
+  ]
+}

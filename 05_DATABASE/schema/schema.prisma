@@ -1,0 +1,283 @@
+// SecureMart — Fraud & IP Anomaly Detection System
+// Database: PostgreSQL (genuine server on 127.0.0.1:5432)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ───────────────────────────── Users & Auth ─────────────────────────────
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id           String       @id @default(cuid())
+  name         String
+  email        String       @unique
+  passwordHash String
+  role         Role         @default(USER)
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  cartItems    CartItem[]
+  orders       Order[]
+  loginEvents  LoginRecord[]
+}
+
+// Every real login/logout is recorded — feeds the user-side security page
+model LoginRecord {
+  id        String   @id @default(cuid())
+  userId    String
+  ip        String
+  userAgent String?
+  success   Boolean
+  country   String?
+  city      String?
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+  @@index([ip])
+}
+
+// ───────────────────────────── Store catalog ─────────────────────────────
+
+model Product {
+  id          String  @id @default(cuid())
+  name        String  @unique
+  description String
+  category    String
+  brand       String
+  price       Int // in paise (₹1 = 100)
+  mrp         Int // list price for discount display
+  image       String
+  stock       Int     @default(50)
+  rating      Float   @default(4.2)
+  featured    Boolean @default(false)
+  createdAt   DateTime @default(now())
+
+  cartItems CartItem[]
+  orderItems OrderItem[]
+}
+
+model CartItem {
+  id        String   @id @default(cuid())
+  userId    String
+  productId String
+  quantity  Int      @default(1)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, productId])
+}
+
+enum OrderStatus {
+  PLACED
+  PACKED
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+model Order {
+  id            String      @id @default(cuid())
+  userId        String
+  total         Int // paise
+  status        OrderStatus @default(PLACED)
+  paymentMethod String      @default("COD")
+  fullName      String
+  phone         String
+  addressLine   String
+  city          String
+  state         String
+  pincode       String
+  ip            String? // IP from which the order was placed
+  createdAt     DateTime    @default(now())
+
+  user  User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items OrderItem[]
+}
+
+model OrderItem {
+  id        String @id @default(cuid())
+  orderId   String
+  productId String
+  name      String // snapshot at purchase time
+  price     Int // snapshot in paise
+  quantity  Int
+
+  order   Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id])
+}
+
+// ───────────────────── Fraud & IP anomaly detection ─────────────────────
+
+enum IpStatus {
+  ACTIVE
+  WATCHLIST
+  BLOCKED
+}
+
+// One row per tracked client IP with live metadata & risk
+model IpAddress {
+  id            String   @id @default(cuid())
+  ip            String   @unique
+  isValid       Boolean  @default(true)
+  isPrivate     Boolean  @default(false)
+  country       String?
+  region        String?
+  city          String?
+  lat           Float?
+  lon           Float?
+  isp           String?
+  userAgent     String?
+  firstSeen     DateTime @default(now())
+  lastSeen      DateTime @default(now())
+
+  totalRequests Int      @default(0)
+  failedLogins  Int      @default(0)
+  successLogins Int      @default(0)
+  distinctUsers Int      @default(0)
+  usernamesTried Int     @default(0)
+  geoJumps      Int      @default(0)
+
+  riskScore     Float    @default(0)
+  threatLabel   String   @default("Clean") // Clean | Suspicious | High Risk | Critical
+  status        IpStatus @default(ACTIVE)
+  blockedAt     DateTime?
+  blockReason   String?
+  blockedBy     String? // AUTO | admin email
+  lastSignals   Json? // last computed signal breakdown
+  mlRisk        Float? // last ML-derived risk contribution
+  ruleRisk      Float? // last rule-derived risk contribution
+
+  events        SecurityEvent[]
+  credentials   CredentialAttempt[]
+
+  @@index([status])
+  @@index([riskScore])
+  @@index([lastSeen])
+}
+
+enum EventType {
+  LOGIN_SUCCESS
+  LOGIN_FAILED
+  SIGNUP
+  RATE_BURST
+  INVALID_IP
+  GEO_JUMP
+  BRUTE_FORCE
+  CREDENTIAL_STUFFING
+  DDOS_SUSPECTED
+  AUTO_BLOCK
+  AUTO_UNBLOCK
+  MANUAL_BLOCK
+  MANUAL_UNBLOCK
+  LOGIN_BLOCKED
+  REQUEST_BLOCKED
+  ML_TRAINED
+  ORDER_PLACED
+}
+
+enum Severity {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+model SecurityEvent {
+  id        String    @id @default(cuid())
+  ip        String
+  userId    String?
+  username  String?
+  type      EventType
+  severity  Severity  @default(LOW)
+  title     String
+  details   Json?
+  createdAt DateTime  @default(now())
+
+  trackedIp IpAddress? @relation(fields: [ip], references: [ip], onDelete: Cascade)
+
+  @@index([createdAt])
+  @@index([type])
+  @@index([ip])
+}
+
+// Credential ledger — every login attempt (valid or not) with full metadata
+model CredentialAttempt {
+  id        String   @id @default(cuid())
+  ip        String
+  username  String
+  success   Boolean
+  userAgent String?
+  reason    String? // failure reason e.g. wrong-password / unknown-user / ip-blocked
+  createdAt DateTime @default(now())
+
+  trackedIp IpAddress? @relation(fields: [ip], references: [ip], onDelete: Cascade)
+
+  @@index([ip])
+  @@index([createdAt])
+}
+
+// Feature snapshots used to train the ML models (weak supervision, real traffic)
+model TrainingSample {
+  id        String   @id @default(cuid())
+  features  Json // named numeric feature vector
+  label     Int? // 1 = attack/blocked, 0 = normal, null = unlabeled (IF only)
+  source    String   @default("live") // live | simulator
+  consumed  Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([consumed])
+  @@index([createdAt])
+}
+
+enum ModelKind {
+  RANDOM_FOREST
+  ISOLATION_FOREST
+}
+
+model ModelArtifact {
+  id         String    @id @default(cuid())
+  kind       ModelKind
+  version    Int
+  trainedAt  DateTime  @default(now())
+  samples    Int
+  attackSamples Int
+  normalSamples Int
+  metrics    Json // accuracy, precision, recall, f1, contamination, ...
+  model      Json // exported trees
+  active     Boolean   @default(false)
+  trainingMs Int       @default(0)
+
+  @@index([kind, active])
+}
+
+model SystemSetting {
+  key       String   @id
+  value     String
+  updatedAt DateTime @updatedAt
+}
+
+// Per-minute aggregate for traffic charts (survives restarts)
+model TrafficMinute {
+  minute     DateTime @id // truncated to minute
+  requests   Int      @default(0)
+  blocked    Int      @default(0)
+  failedLogins Int    @default(0)
+  uniqueIps  Int      @default(0)
+
+  @@index([minute])
+}

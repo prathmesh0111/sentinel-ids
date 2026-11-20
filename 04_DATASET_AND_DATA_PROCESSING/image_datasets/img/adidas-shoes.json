@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "query": "Adidas Ultraboost Light running shoes product photo",
+  "count": 2,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/35ed75c70a94.jpg",
+      "caption": "",
+      "source": "Amazon.in",
+      "original_width": "1000px",
+      "original_height": "1000px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f8d2a77c7c02.jpg",
+      "caption": "",
+      "source": "Hnak",
+      "original_width": "1000px",
+      "original_height": "1250px"
+    }
+  ]
+}

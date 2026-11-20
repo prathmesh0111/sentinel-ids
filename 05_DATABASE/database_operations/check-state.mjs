@@ -1,0 +1,12 @@
+import { PrismaClient } from '@prisma/client'
+const p = new PrismaClient()
+const ips = await p.ipAddress.findMany({ orderBy: { lastSeen: 'desc' }, take: 10, select: { ip: true, totalRequests: true, riskScore: true, status: true, lastSeen: true } })
+console.log('TRACKED IPs NOW:')
+ips.forEach((r) => console.log(' ', r.ip, '| reqs', r.totalRequests, '| risk', r.riskScore, r.status, '| seen', r.lastSeen.toISOString()))
+const evs = await p.securityEvent.findMany({ orderBy: { createdAt: 'desc' }, take: 10, select: { type: true, ip: true, title: true, createdAt: true } })
+console.log('LATEST EVENTS:')
+evs.forEach((e) => console.log(' ', e.createdAt.toISOString(), e.type, e.ip, '|', e.title.slice(0, 80)))
+const tm = await p.trafficMinute.findMany({ orderBy: { minute: 'desc' }, take: 5, select: { minute: true, requests: true, blocked: true, failedLogins: true } })
+console.log('TRAFFIC MINUTES:')
+tm.forEach((t) => console.log(' ', t.minute.toISOString(), 'req', t.requests, 'blocked', t.blocked, 'failed', t.failedLogins))
+await p.$disconnect()

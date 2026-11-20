@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "query": "Noise ColorFit Pro 5 smartwatch product photo",
+  "count": 2,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/9b854b6fb952.jpg",
+      "caption": "",
+      "source": "Amazon.in",
+      "original_width": "837px",
+      "original_height": "1000px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/a17d3f2f8956.jpeg",
+      "caption": "",
+      "source": "Zepto",
+      "original_width": "1200px",
+      "original_height": "1200px"
+    }
+  ]
+}

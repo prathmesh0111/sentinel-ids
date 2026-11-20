@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "query": "Sony WH-CH720N wireless over ear headphones product photo",
+  "count": 2,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/c80ab80034a2.jpg",
+      "caption": "",
+      "source": "Amazon.com",
+      "original_width": "1920px",
+      "original_height": "1080px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/28772c5dfa05.jpg",
+      "caption": "",
+      "source": "Klarna",
+      "original_width": "1933px",
+      "original_height": "1821px"
+    }
+  ]
+}

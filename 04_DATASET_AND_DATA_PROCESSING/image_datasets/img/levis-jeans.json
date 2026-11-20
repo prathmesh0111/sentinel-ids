@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "query": "Levis 511 slim fit blue jeans product photo",
+  "count": 2,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/1e997fa43e2f.jpeg",
+      "caption": "",
+      "source": "Levi's Men's 511 Slim Fit Jeans - Walmart.com",
+      "original_width": "800px",
+      "original_height": "1067px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/a0f10c847784.jpg",
+      "caption": "",
+      "source": "Very",
+      "original_width": "1350px",
+      "original_height": "1800px"
+    }
+  ]
+}

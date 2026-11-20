@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "query": "Samsung Galaxy S24 5G smartphone official product photo",
+  "count": 2,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/ab0de9d02a42.jpg",
+      "caption": "",
+      "source": "WIRED",
+      "original_width": "1280px",
+      "original_height": "670px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/47d6b10f4096.jpg",
+      "caption": "",
+      "source": "Amazon.in",
+      "original_width": "1910px",
+      "original_height": "1000px"
+    }
+  ]
+}

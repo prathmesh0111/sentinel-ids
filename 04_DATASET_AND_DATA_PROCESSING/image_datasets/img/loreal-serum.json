@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "query": "LOreal Paris Revitalift face serum bottle product photo",
+  "count": 2,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/3f843ec4f1f4.jpg",
+      "caption": "",
+      "source": "GoSupps.com",
+      "original_width": "2560px",
+      "original_height": "2560px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/58abb2508379.jpeg",
+      "caption": "",
+      "source": "Walmart",
+      "original_width": "2200px",
+      "original_height": "2200px"
+    }
+  ]
+}

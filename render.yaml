@@ -1,0 +1,37 @@
+# Render Blueprint — Sentinel IDS backend (two services, one repo)
+# Docs: https://render.com/docs/blueprint-spec
+# Deploy: Render dashboard -> New -> Blueprint -> pick this repository.
+# Set the sync:false secrets in the Render dashboard after the first deploy.
+
+services:
+  # The full Next.js app: security engine + all API routes + ML training.
+  # Runs persistently (required — the engine keeps in-memory IP state that
+  # serverless platforms like Vercel cannot provide).
+  - type: web
+    name: sentinel-ids-backend
+    runtime: node
+    plan: free
+    buildCommand: npm install && pip install -r requirements.txt && npm run build
+    startCommand: npm run start
+    healthCheckPath: /api/products
+    envVars:
+      - key: DATABASE_URL
+        sync: false          # Neon/Render PostgreSQL connection string
+      - key: SESSION_SECRET
+        generateValue: true  # long random string, keep stable across deploys
+      - key: STREAM_INTERNAL_URL
+        sync: false          # https://sentinel-ids-stream.onrender.com (engine -> stream)
+      - key: NODE_ENV
+        value: production
+
+  # Realtime security event stream (Socket.IO websockets — Vercel serverless
+  # cannot host persistent websockets, so this lives on Render).
+  - type: web
+    name: sentinel-ids-stream
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npx tsx 02_BACKEND_SERVER/security_stream_service/index.ts
+    envVars:
+      - key: DATABASE_URL
+        sync: false          # same database as the backend

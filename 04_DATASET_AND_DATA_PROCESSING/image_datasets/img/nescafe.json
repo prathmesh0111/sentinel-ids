@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "query": "Nescafe Classic instant coffee jar product photo",
+  "count": 2,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/7dbadb9cdb2d.jpg",
+      "caption": "",
+      "source": "Welcome to S&R Shopping | S&R Shopping",
+      "original_width": "2000px",
+      "original_height": "2000px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/dd6f32807a05.jpg",
+      "caption": "",
+      "source": "Amazon.com",
+      "original_width": "2500px",
+      "original_height": "2500px"
+    }
+  ]
+}

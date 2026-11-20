@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "query": "Prestige Iris 750W mixer grinder kitchen appliance product photo",
+  "count": 2,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/a9bfa6e36b83.jpg",
+      "caption": "",
+      "source": "eBay",
+      "original_width": "1200px",
+      "original_height": "1200px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/b9da74f533d0.jpg",
+      "caption": "",
+      "source": "Justdial",
+      "original_width": "1000px",
+      "original_height": "1000px"
+    }
+  ]
+}

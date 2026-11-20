@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "query": "US Polo Assn mens polo t-shirt product photo",
+  "count": 2,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/9867107e9612.jpg",
+      "caption": "",
+      "source": "Amazon.in",
+      "original_width": "1320px",
+      "original_height": "1100px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/2d1d3ed0cea4.jpg",
+      "caption": "",
+      "source": "Amazon.in",
+      "original_width": "1320px",
+      "original_height": "1100px"
+    }
+  ]
+}

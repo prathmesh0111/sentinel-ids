@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "query": "Apple MacBook Air M2 laptop product photo",
+  "count": 2,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/27c66c7fdb42.jpg",
+      "caption": "",
+      "source": "Amazon.com",
+      "original_width": "1500px",
+      "original_height": "1434px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/ac06bb8837b3.jpg",
+      "caption": "",
+      "source": "Space",
+      "original_width": "2560px",
+      "original_height": "1440px"
+    }
+  ]
+}

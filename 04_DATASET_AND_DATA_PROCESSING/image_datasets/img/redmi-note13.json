@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "query": "Redmi Note 13 Pro smartphone official product photo",
+  "count": 2,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/8e700630f303.png",
+      "caption": "",
+      "source": "Xiaomi",
+      "original_width": "1080px",
+      "original_height": "1900px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/64a43f7ce944.jpg",
+      "caption": "",
+      "source": "www.movertix.com",
+      "original_width": "1200px",
+      "original_height": "1200px"
+    }
+  ]
+}

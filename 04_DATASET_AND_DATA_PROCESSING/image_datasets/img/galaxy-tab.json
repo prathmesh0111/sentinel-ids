@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "query": "Samsung Galaxy Tab A9 Plus tablet product photo",
+  "count": 2,
+  "ranked": false,
+  "captioned_count": 0,
+  "results": [
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/ff9f8343431d.jpg",
+      "caption": "",
+      "source": "Alibaba.com",
+      "original_width": "1250px",
+      "original_height": "1250px"
+    },
+    {
+      "original_url": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/3c804ed99815.jpg",
+      "caption": "",
+      "source": "eBay",
+      "original_width": "1000px",
+      "original_height": "1000px"
+    }
+  ]
+}

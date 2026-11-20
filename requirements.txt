@@ -1,0 +1,5 @@
+# Sentinel IDS — Python ML trainer dependencies
+# Install with:  pip install -r requirements.txt
+# Used by 03_MACHINE_LEARNING_MODELS/model_training/train.py
+scikit-learn>=1.4
+numpy>=1.26
