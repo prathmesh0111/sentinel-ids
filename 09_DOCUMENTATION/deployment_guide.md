@@ -20,19 +20,14 @@ needed at deploy time — everything is wired through environment variables.
 
 ---
 
-## STEP 0 — Put the code on GitHub
+## STEP 0 — Push the code to GitHub (already committed locally)
 
-```bash
-git init
-git add .
-git commit -m "Sentinel IDS — initial commit"
-```
-
-Create an empty repository on github.com, then:
+Git is installed and the project is committed. Create an empty repository on
+github.com (e.g. `sentinel-ids`, no README), then:
 
 ```bash
 git remote add origin https://github.com/<your-username>/sentinel-ids.git
-git push -u origin main
+git push -u origin master
 ```
 
 (The `.gitignore` already excludes the local database, `.env` and generated files.)
